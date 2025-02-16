@@ -10,9 +10,10 @@ WORKDIR /app
 # Install dependencies
 # RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install poetry
+RUN poetry config virtualenvs.create false
+COPY . .
 RUN poetry install
 # Copy the rest of the application code
-COPY . .
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
